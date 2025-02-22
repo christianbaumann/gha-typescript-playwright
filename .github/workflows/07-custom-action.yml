@@ -18,3 +18,5 @@ jobs:
 
       - name: Run custom PR Comment Reporter action
         uses: ./.github/actions/pr-commenter
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
