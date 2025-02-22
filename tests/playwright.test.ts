@@ -7,7 +7,8 @@ test.describe('Playwright UI Tests', () => {
         await page.goto('https://christianbaumann.dev/');
 
         // Assert
-        await expect(page).toHaveTitle(/Christian Baumann/);
+        // await expect(page).toHaveTitle(/Christian Baumann/);
+        await expect(page).toHaveTitle(/Frodo Baggins/);
         test.info().annotations.push({ type: 'info', description: '✅ Title validation successful (CB).' });
     });
 
