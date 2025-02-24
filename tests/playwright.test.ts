@@ -8,7 +8,7 @@ test.describe('Playwright UI Tests', () => {
 
         // Assert
         // await expect(page).toHaveTitle(/Playwright/);
-        await expect(page).toHaveTitle(/Frodo Baggins/);
+        await expect(page).toHaveTitle(/Harry Potter/);
         test.info().annotations.push({ type: 'info', description: '✅ Title validation successful (PW).' });
     });
 
