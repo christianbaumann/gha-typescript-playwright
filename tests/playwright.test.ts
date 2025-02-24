@@ -7,7 +7,8 @@ test.describe('Playwright UI Tests', () => {
         await page.goto('https://playwright.dev/');
 
         // Assert
-        await expect(page).toHaveTitle(/Playwright/);
+        // await expect(page).toHaveTitle(/Playwright/);
+        await expect(page).toHaveTitle(/Daenerys Stormborn of House Targaryen, the First of Her Name, Queen of the Andals and the First Men, Protector of the Seven Kingdoms, the Mother of Dragons, the Khaleesi of the Great Grass Sea, the Unburnt, the Breaker of Chains/);
         test.info().annotations.push({ type: 'info', description: '✅ Title validation successful (PW).' });
     });
 
