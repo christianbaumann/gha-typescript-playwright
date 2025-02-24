@@ -204,20 +204,24 @@ Each exercise has:
 
 1. Create a new workflow file `08-auto-merge.yaml`.
 2. Modify the workflow to:
-    - Trigger on a pull request when all required checks pass.
-    - Ensure that the workflow prevents merging unless all required checks have passed.
-    - Use the `peter-evans/enable-pull-request-automerge` action (or a similar one from the marketplace) to enable
-      auto-merge.
-    - Merge the pull request automatically if all required status checks pass.
-3. **Optional (for participants with a paid GitHub plan):** Configure branch protection rules to require status checks
-   before merging for additional enforcement.
-4. Open a pull request with a small change and observe the automation.
+   - Trigger on a pull request when all required checks pass.
+   - Ensure that the workflow prevents merging unless all required checks have passed.
+   - Use the `peter-evans/enable-pull-request-automerge` action (or a similar one from the marketplace) to enable auto-merge.
+   - Merge the pull request automatically if all required status checks pass.
+   - Ensure the workflow has the correct permissions set for the token to allow merging pull requests.
+3. Set up and use `GITHUB_TOKEN` to authenticate the merge action securely.
+4. **Optional (for participants with a paid GitHub plan):** Configure branch protection rules to require status checks before merging for additional enforcement.
+5. Open a pull request with a small change and observe the automation.
 
 🔗 Relevant Documentation:
 
 - [GitHub Actions workflow syntax](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions)
 - [Protecting branches (classic)](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches)
 - [Enable Pull Request Auto-merge](https://github.com/marketplace/actions/enable-pull-request-automerge)
+- [Using GITHUB_TOKEN in workflows](https://docs.github.com/en/actions/security-guides/automatic-token-authentication)
+- [Workflow permissions](https://docs.github.com/en/actions/using-jobs/assigning-permissions-to-jobs)
+
+
 
 ---
 
