@@ -4,6 +4,7 @@ on:
   pull_request:
 
 permissions:
+  contents: read  # Required to checkout code
   pull-requests: write # Required to allow merging pull requests
 
 jobs:
