@@ -55,12 +55,12 @@ Each exercise has:
 
 ### 🚀 Exercise 1: Create a Basic Workflow
 
-📂 Workflow file: `.github/workflows/01-basic-workflow.yml`  
+📂 Workflow file: `.github/workflows/01-basic-workflow.yaml`  
 💡 Goal: Understand workflow structure and manually trigger a workflow.
 
 #### 📌 Instructions
 
-1. Inside the `.github/workflows/` directory, create a new file `01-basic-workflow.yml`.
+1. Inside the `.github/workflows/` directory, create a new file `01-basic-workflow.yaml`.
 2. Define a workflow that:
     - Can be triggered manually
     - Runs a simple print command
@@ -77,7 +77,7 @@ Each exercise has:
 
 ### 🛠 Exercise 2: Run Playwright Tests in CI/CD
 
-📂 Workflow file: `.github/workflows/02-run-tests.yml`  
+📂 Workflow file: `.github/workflows/02-run-tests.yaml`  
 💡 Goal: Run Playwright tests in GitHub Actions.
 
 #### 📌 Instructions
@@ -98,12 +98,12 @@ Each exercise has:
 
 ### 🛠 Exercise 3: Cache Dependencies for Faster Builds
 
-📂 Workflow file: `.github/workflows/03-cache-dependencies.yml`  
+📂 Workflow file: `.github/workflows/03-cache-dependencies.yaml`  
 💡 Goal: Cache dependencies to speed up workflow execution.
 
 #### 📌 Instructions
 
-1. Create a workflow file (based on `02-run-tests.yml`) that:
+1. Create a workflow file (based on `02-run-tests.yaml`) that:
     - Caches dependencies to avoid reinstalling them on every run.
     - Restores the cache if available, otherwise installs dependencies as usual.
 2. Commit & push the workflow.
@@ -117,12 +117,12 @@ Each exercise has:
 
 ### 📊 Exercise 4: Upload Playwright Test Reports
 
-📂 Workflow file: `.github/workflows/04-upload-reports.yml`  
+📂 Workflow file: `.github/workflows/04-upload-reports.yaml`  
 💡 Goal: Store test results (screenshots, logs) as GitHub Actions artifacts.
 
 #### 📌 Instructions
 
-1. Create a workflow file (based on `03-cache-dependencies.yml`), that uploads the following folders:
+1. Create a workflow file (based on `03-cache-dependencies.yaml`), that uploads the following folders:
     - For TypeScript: `playwright-report` and `test-results`
     - For Java: `target/reports` and `target/surefire-reports`
 2. Commit & push changes.
@@ -136,12 +136,12 @@ Each exercise has:
 
 ### 📌 Exercise 5: Show Test Report in GitHub UI
 
-📂 Workflow file: `.github/workflows/05-show-report.yml`  
+📂 Workflow file: `.github/workflows/05-show-report.yaml`  
 💡 Goal: Display test results directly in the GitHub Actions summary tab.
 
 #### 📌 Instructions
 
-1. Create a workflow file (based on `03-cache-dependencies.yml`), that displays the HTML test report using an action
+1. Create a workflow file (based on `03-cache-dependencies.yaml`), that displays the HTML test report using an action
    such as `phoenix-actions/test-reporting@v15` or a similar alternative.
     - For Java: Use the report file `target/reports/surefire.html`
     - For TypeScript: Use the report file `playwright-report/index.html`
@@ -158,12 +158,12 @@ Each exercise has:
 
 ### 🔗 Exercise 6: Run Tests on Pull Requests
 
-📂 Workflow file: `.github/workflows/06-run-on-pr.yml`  
+📂 Workflow file: `.github/workflows/06-run-on-pr.yaml`  
 💡 Goal: Automatically test pull requests.
 
 #### 📌 Instructions
 
-1. Create a workflow file (based on `03-cache-dependencies.yml`)
+1. Create a workflow file (based on `03-cache-dependencies.yaml`)
 2. Modify the workflow’s `on:` field to trigger tests on pull requests.
 3. Create a new branch, modify a test, and open a pull request.
 4. Observe the test execution in GitHub Actions.
@@ -181,7 +181,7 @@ Each exercise has:
 #### 📌 Instructions
 
 1. Ensure your workflow is set up to run tests on pull requests (e.g., using your existing
-   `.github/workflows/05-run-on-pr.yml` file).
+   `.github/workflows/05-run-on-pr.yaml` file).
 2. In GitHub, enable "Require status checks to pass before merging" (classic protection rule) for your branch.
 3. Test the setup by pushing a commit that intentionally fails a test.
 
@@ -197,12 +197,12 @@ Each exercise has:
 
 ### 🔄 Exercise 8: Automatically Merge a Pull Request When All Actions Pass
 
-📂 Workflow file: `.github/workflows/13-auto-merge.yml`  
+📂 Workflow file: `.github/workflows/08-auto-merge.yaml`  
 💡 Goal: Automatically merge a pull request when all required checks pass.
 
 #### 📌 Instructions
 
-1. Create a new workflow file `13-auto-merge.yml`.
+1. Create a new workflow file `08-auto-merge.yaml`.
 2. Modify the workflow to:
     - Trigger on a pull request when all required checks pass.
     - Ensure that the workflow prevents merging unless all required checks have passed.
@@ -223,12 +223,12 @@ Each exercise has:
 
 ### 🔧 Exercise 9: Create a Custom GitHub Action
 
-📂 Workflow file: `.github/workflows/09-custom-action.yml`  
+📂 Workflow file: `.github/workflows/09-custom-action.yaml`  
 💡 Goal: Create and use a custom GitHub Action.
 
 #### 📌 Instructions
 
-1. Create a new workflow file `09-custom-action.yml`
+1. Create a new workflow file `09-custom-action.yaml`
 1. Edit your workflow to simulate Playwright test output and use the custom action to process it.
    <details>
    <summary>See hints</summary>
@@ -238,7 +238,7 @@ Each exercise has:
 
    </details>
 2. Inside `.github/actions/`, create a folder `playwright-summary`.
-3. Inside the folder, create `action.yml` and define a composite action that processes Playwright test results.
+3. Inside the folder, create `action.yaml` and define a composite action that processes Playwright test results.
    <details>
    <summary>See hints</summary>
 
@@ -259,12 +259,12 @@ Each exercise has:
 
 ### ⏰ Exercise 10: Scheduled Regression Suites
 
-📂 Workflow file: `.github/workflows/10-scheduled-regression.yml`  
+📂 Workflow file: `.github/workflows/10-scheduled-regression.yaml`  
 💡 Goal: Set up a workflow that automatically runs on a weekday schedule.
 
 #### 📌 Instructions
 
-1. Create a new workflow file  `10-scheduled-regression.yml` (based on any of the already existing workflows)
+1. Create a new workflow file  `10-scheduled-regression.yaml` (based on any of the already existing workflows)
 2. Modify the workflow to trigger automatically on a schedule (weekdays at 1 AM UTC).
 3. Commit & push your changes.
 4. Observe test execution in GitHub Actions logs once the scheduled time passes.
@@ -280,12 +280,12 @@ Each exercise has:
 
 ### 🐳 Exercise 11: Containerized Testing with Docker
 
-📂 Workflow file: `.github/workflows/11-containerized-testing.yml`  
+📂 Workflow file: `.github/workflows/11-containerized-testing.yaml`  
 💡 Goal: Run tests inside Docker containers to ensure consistency across different environments.
 
 #### 📌 Instructions
 
-1. Create a workflow `11-containerized-testing.yml` file (based on `03-cache-dependencies.yml`) that:
+1. Create a workflow `11-containerized-testing.yaml` file (based on `03-cache-dependencies.yaml`) that:
     - Uses Docker containers to run tests.
     - Runs on every push and pull request.
 2. Modify your test setup to execute inside a Docker container.
@@ -307,13 +307,13 @@ Each exercise has:
 
 ### ⚡ Exercise 12: Parallel Test Execution
 
-📂 Workflow file: `.github/workflows/12-parallel-tests.yml`  
+📂 Workflow file: `.github/workflows/12-parallel-tests.yaml`  
 💡 Goal: Configure a matrix strategy in GitHub Actions to run Playwright tests concurrently across different browsers or
 environments.
 
 #### 📌 Instructions
 
-1. Create a new workflow file `12-parallel-tests.yml` (based on `03-cache-dependencies.yml`).
+1. Create a new workflow file `12-parallel-tests.yaml` (based on `03-cache-dependencies.yaml`).
 2. Use a matrix strategy to define multiple browsers (e.g., `chromium`, `firefox`, `webkit`)
     - For Java: pass a system property (e.g. `-Dplaywright.browserName=${{ matrix.browser }}`).
     - For TypeScript: pass the browser name to `npx playwright test` (e.g. `--browser ${{ matrix.browser }}`).
@@ -333,12 +333,12 @@ environments.
 
 ### 🏁 Exercise 13: Cross-Platform Parallel Testing
 
-📂 Workflow file: `.github/workflows/13-cross-platform-parallel.yml`  
+📂 Workflow file: `.github/workflows/13-cross-platform-parallel.yaml`  
 💡 Goal: Execute tests in parallel across all combinations of Ubuntu, Windows, Mac with Chromium, Firefox, and Webkit.
 
 #### 📌 Instructions
 
-1. Create a workflow (based on `11-parallel-tests.yml`) file that:
+1. Create a workflow (based on `11-parallel-tests.yaml`) file that:
     - Runs tests in parallel across Ubuntu, Windows, and Mac.
     - Tests each browser: Chromium, Firefox, and Webkit.
     - Uses a matrix strategy to cover all combinations.
