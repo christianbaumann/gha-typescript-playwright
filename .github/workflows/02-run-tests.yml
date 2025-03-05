@@ -4,13 +4,6 @@ on:
       - main
 
 jobs:
-  #   run_simple_print_command:
-  #     name: Run simple print command
-  #     runs-on: ubuntu-latest
-  #     steps:
-  #       - name: Print Hello World
-  #         run: |
-  #           echo "Hello world"
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
