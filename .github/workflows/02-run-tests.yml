@@ -21,8 +21,9 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.npm
-          key: ${{ runner.os}}-node-${{ hashFiles('**/package-lock.jsin')}}
-          restore-keys: ${{ runner.os }}-node-
+          key: ${{ runner.os}}-node-${{ hashFiles('**/package-lock.json')}}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
       - name: Install dependencies
         run: npm ci
@@ -32,3 +33,11 @@ jobs:
 
       - name: Run Playwright tests
         run: npx playwright test
+
+      - name: Upload Test Reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-artifacts
+          path: |
+            playwright-report
+            test-results
