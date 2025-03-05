@@ -41,3 +41,14 @@ jobs:
           path: |
             playwright-report
             test-results
+
+      - name: Publish Test report
+        uses: phoenix-actions/test-reporting@v15
+        with:
+          name: 'Publish test report (Playwright)'
+          path: 'playwright-report/results.xml'
+          reporter: java-junit
+          list-tests: all
+          list-suites: all
+          fail-on-error: true
+          output-to: 'step-summary'
