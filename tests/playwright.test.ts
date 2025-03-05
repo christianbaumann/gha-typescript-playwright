@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('Playwright UI Tests1', () => {
+test.describe('Playwright UI Tests', () => {
 
     test('Check Playwright page title', async ({ page }) => {
         // Act
