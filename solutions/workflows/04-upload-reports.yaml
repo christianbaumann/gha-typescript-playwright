@@ -1,43 +1,28 @@
-name: Upload Playwright Reports
-
-on: push
+on:
+  push:
+    branches:
+      - main
 
 jobs:
-  tests:
-    name: Upload Playwright Reports
+  test:
+    timeout-minutes: 60
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup NodeJS
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: lts/*
-          cache: npm
-
-      - name: Restore npm cache
-        uses: actions/cache@v4
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
+          node-version: 20
+          cache: "npm"
       - name: Install dependencies
         run: npm ci
-
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
-
       - name: Run Playwright tests
         run: npx playwright test
-
-      - name: Upload Test Reports  # Uploads test results as artifacts for later review.
+      - name: Upload Playwright Report and Test Results
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-artifacts  # The artifact name displayed in GitHub Actions.
+          name: Upload artifacts
           path: |
-            playwright-report  # Directory containing Playwright's test report.
-            test-results  # Directory containing detailed test results.
+            playwright-report
+            test-results
