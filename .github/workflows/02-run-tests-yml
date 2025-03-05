@@ -1,6 +1,6 @@
 name: Bow Playwright
 
-on: workflow_dispatch
+on: push
 
 jobs:
   basic-workflow:
