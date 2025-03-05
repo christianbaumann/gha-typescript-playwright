@@ -1,0 +1,15 @@
+name: Basic Workflow  # The name of the workflow, which appears in the GitHub Actions UI.
+
+on: workflow_dispatch  # This defines the event that triggers the workflow. "workflow_dispatch" allows manual triggering.
+
+jobs:
+  basic-workflow:  # Defines a job named "basic-workflow".
+    name: Basic Workflow  # The display name for the job in the GitHub Actions UI.
+    runs-on: ubuntu-latest  # Specifies that this job should run on the latest Ubuntu environment.
+
+    steps:
+      - name: Checkout repository  # Step 1: Checks out the repository code so that subsequent steps have access to it.
+        uses: actions/checkout@v4  # This is a prebuilt action that clones the repository into the workflow runner.
+
+      - name: Print environment details  # Step 2: Prints all environment variables to the workflow log.
+        run: env  # The "env" command lists all environment variables available in the runner.
