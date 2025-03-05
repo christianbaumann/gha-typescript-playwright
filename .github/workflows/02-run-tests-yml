@@ -1,11 +1,10 @@
-name: Bow runs tests
+name: Bow Playwright
 
 on: workflow_dispatch
-# on: push
 
 jobs:
   basic-workflow:
-    name: Bow runs tests
+    name: Bow Playwright
     runs-on: ubuntu-latest
 
     steps:
