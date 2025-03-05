@@ -16,9 +16,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
+        run: npx playwright install chromium --with-deps
       - name: Run Playwright tests
-        run: npx playwright test
+        run: npx playwright test --project=chromium --reporter=junit
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
@@ -31,5 +31,5 @@ jobs:
         if: success() || failure() # run this step even if previous step failed
         with:
           name: Playwright report
-          path: playwright-report/index.html
-          reporter: playwright
+          path: playwright-report/results.xml
+          reporter: jest-junit
