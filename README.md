@@ -46,6 +46,7 @@ npx playwright test
 ## 🛠 Exercises
 
 Each exercise has:
+
 - Detailed instructions
 - Link(s) to relevant GitHub Actions (and other) documentation
 
@@ -60,13 +61,14 @@ Each exercise has:
 
 1. Inside the `.github/workflows/` directory, create a new file `01-basic-workflow.yml`.
 2. Define a workflow that:
-    - Can be triggered manually
-    - Runs a simple print command
+   - Can be triggered manually
+   - Runs a simple print command
 3. Commit & push the workflow.
 4. Trigger the workflow manually from GitHub Actions.
 5. Observe the logs.
 
 🔗 Relevant Documentation:
+
 - [Workflow syntax](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions)
 - [Triggering workflows manually](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_dispatch)
 
@@ -80,11 +82,12 @@ Each exercise has:
 #### 📌 Instructions
 
 1. Create a workflow file that:
-    - Runs Playwright tests on every push to `main`.
+   - Runs Playwright tests on every push to `main`.
 2. Commit & push the workflow.
 3. Observe test execution in GitHub Actions logs.
 
 🔗 Relevant Documentation:
+
 - [Events that trigger workflows](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows)
 - [Using jobs in a workflow](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/using-jobs-in-a-workflow)
 - [Adding scripts to your workflow](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/adding-scripts-to-your-workflow)
@@ -100,12 +103,13 @@ Each exercise has:
 #### 📌 Instructions
 
 1. Create a workflow file (based on `02-run-tests.yml`) that:
-    - Caches dependencies to avoid reinstalling them on every run.
-    - Restores the cache if available, otherwise installs dependencies as usual.
+   - Caches dependencies to avoid reinstalling them on every run.
+   - Restores the cache if available, otherwise installs dependencies as usual.
 2. Commit & push the workflow.
 3. Observe the caching mechanism in the GitHub Actions logs.
 
 🔗 Relevant Documentation:
+
 - [Caching Dependencies to Speed Up Workflows](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/caching-dependencies-to-speed-up-workflows)
 
 ---
@@ -118,12 +122,13 @@ Each exercise has:
 #### 📌 Instructions
 
 1. Create a workflow file (based on `03-cache-dependencies.yml`), that uploads the following folders:
-    - For TypeScript: `playwright-report` and `test-results`
-    - For Java: `target/reports` and `target/surefire-reports`
+   - For TypeScript: `playwright-report` and `test-results`
+   - For Java: `target/reports` and `target/surefire-reports`
 2. Commit & push changes.
    3Run the tests and check artifacts in GitHub Actions UI.
 
 🔗 Relevant Documentation:
+
 - [Storing and sharing data from a workflow](https://docs.github.com/en/actions/using-workflows/storing-workflow-data-as-artifacts)
 
 ---
@@ -136,18 +141,19 @@ Each exercise has:
 #### 📌 Instructions
 
 1. Create a workflow file (based on `03-cache-dependencies.yml`), that displays the HTML test report using an action such as `phoenix-actions/test-reporting@v15` or a similar alternative.
-    - For Java: Use the report file `target/reports/surefire.html`
-    - For TypeScript: Use the report file `playwright-report/index.html`
+   - For Java: Use the report file `target/reports/surefire.html`
+   - For TypeScript: Use the report file `playwright-report/index.html`
 2. Commit & push changes.
 3. Observe the test report preview in the GitHub Actions summary tab.
 
 🔗 Relevant Documentation:
+
 - [phoenix-actions/test-reporting@v15](https://github.com/phoenix-actions/test-reporting)
 - [Using `GITHUB_STEP_SUMMARY`](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#adding-a-job-summary)
 
 ---
 
-### 🔗 Exercise 6: Run Tests on Pull Requests
+### 🔗 Exercise 6: Run Tests on Pull Requestscool
 
 📂 Workflow file: `.github/workflows/06-run-on-pr.yml`  
 💡 Goal: Automatically test pull requests.
@@ -160,6 +166,7 @@ Each exercise has:
 4. Observe the test execution in GitHub Actions.
 
 🔗 Relevant Documentation:
+
 - [Events that trigger workflows](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows)
 
 ---
@@ -178,6 +185,7 @@ Each exercise has:
 - 💡Note: For organizations on GitHub Team/Enterprise, you can also use [branch rulesets](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets).
 
 🔗 Relevant Documentation:
+
 - [Protecting branches (classic)](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches)
 
 ---
@@ -197,6 +205,7 @@ Each exercise has:
    Write fake test results to the file, simulating passed and failed tests.
 
    </details>
+
 2. Inside `.github/actions/`, create a folder `playwright-summary`.
 3. Inside the folder, create `action.yml` and define a composite action that processes Playwright test results.
    <details>
@@ -205,12 +214,14 @@ Each exercise has:
    The custom action processes the `test-results/report.txt` file, extracts its content, and formats a summary for display in GitHub job summaries.
 
    </details>
+
 4. Commit & push your changes.
 5. Observe the formatted test summary in the GitHub Actions logs.
 
 ✨ Note: Feel free to come up with an own idea and implement it as custom action.
 
 🔗 Relevant Documentation:
+
 - [Creating custom actions](https://docs.github.com/en/actions/creating-actions)
 
 ---
@@ -222,7 +233,7 @@ Each exercise has:
 
 #### 📌 Instructions
 
-1. Create a new workflow file  `09-scheduled-regression.yml` (based on any of the already existing workflows)
+1. Create a new workflow file `09-scheduled-regression.yml` (based on any of the already existing workflows)
 2. Modify the workflow to trigger automatically on a schedule (weekdays at 1 AM UTC).
 3. Commit & push your changes.
 4. Observe test execution in GitHub Actions logs once the scheduled time passes.
@@ -230,28 +241,31 @@ Each exercise has:
 ❗ Note: To really observe the execution, set the trigger to execute shortly after you will have pushed.
 
 🔗 Relevant Documentation:
+
 - [GitHub Actions schedule event](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule)
 - [CRON syntax for GitHub Actions](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#onschedule)
 
 ---
 
 ### 🐳 Exercise 10: Containerized Testing with Docker
+
 📂 Workflow file: `.github/workflows/10-containerized-testing.yml`  
 💡 Goal: Run tests inside Docker containers to ensure consistency across different environments.
 
 #### 📌 Instructions
 
 1. Create a workflow `10-containerized-testing.yml` file (based on `03-cache-dependencies.yml`) that:
-    - Uses Docker containers to run tests.
-    - Runs on every push and pull request.
+   - Uses Docker containers to run tests.
+   - Runs on every push and pull request.
 2. Modify your test setup to execute inside a Docker container.
-    - For Java: Use a `maven:latest` container to run tests.
-    - For TypeScript: Use a `node:latest` container with Playwright pre-installed.
+   - For Java: Use a `maven:latest` container to run tests.
+   - For TypeScript: Use a `node:latest` container with Playwright pre-installed.
 3. Ensure dependencies are installed inside the container.
 4. Commit & push your changes.
 5. Observe the test execution logs inside the container.
 
 🔗 Relevant Documentation:
+
 - [Using Docker in GitHub Actions](https://docs.github.com/en/actions/creating-actions/dockerfile-support-for-github-actions)
 - [Playwright Docker setup](https://playwright.dev/docs/ci#docker)
 - [Maven in Docker](https://hub.docker.com/_/maven)
@@ -269,19 +283,20 @@ Each exercise has:
 
 1. Create a new workflow file `11-parallel-tests.yml` (based on `03-cache-dependencies.yml`).
 2. Use a matrix strategy to define multiple browsers (e.g., `chromium`, `firefox`, `webkit`)
-    - For Java: pass a system property (e.g. `-Dplaywright.browserName=${{ matrix.browser }}`).
-    - For TypeScript: pass the browser name to `npx playwright test` (e.g. `--browser ${{ matrix.browser }}`).
+   - For Java: pass a system property (e.g. `-Dplaywright.browserName=${{ matrix.browser }}`).
+   - For TypeScript: pass the browser name to `npx playwright test` (e.g. `--browser ${{ matrix.browser }}`).
 3. Java only: Update your project files so tests can pick the correct browser:
-    - Open `src/test/java/dev/christianbaumann/PlaywrightTest.java`
-    - Uncomment the second @BeforeAll method and comment out the default one
+   - Open `src/test/java/dev/christianbaumann/PlaywrightTest.java`
+   - Uncomment the second @BeforeAll method and comment out the default one
 4. Commit & push the new workflow (and any modified files).
 5. Observe the concurrent runs in GitHub Actions. Each job in the matrix should execute in parallel, one for each browser/ environment.
 
 🔗 Relevant Documentation:
+
 - [Using a matrix strategy](https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs)
 - [Playwright CLI reference](https://playwright.dev/docs/test-cli)
 
---- 
+---
 
 ### 🏁 Exercise 12: Cross-Platform Parallel Testing
 
@@ -291,14 +306,15 @@ Each exercise has:
 #### 📌 Instructions
 
 1. Create a workflow (based on `11-parallel-tests.yml`) file that:
-    - Runs tests in parallel across Ubuntu, Windows, and Mac.
-    - Tests each browser: Chromium, Firefox, and Webkit.
-    - Uses a matrix strategy to cover all combinations.
+   - Runs tests in parallel across Ubuntu, Windows, and Mac.
+   - Tests each browser: Chromium, Firefox, and Webkit.
+   - Uses a matrix strategy to cover all combinations.
 2. Java: Keep the changes in `src/test/java/dev/christianbaumann/PlaywrightTest.java` from [Exercise 11](#exercise-11-parallel-test-execution)
 3. Commit & push the workflow.
 4. Observe the test execution across different platforms and browsers.
 
 🔗 Relevant Documentation:
+
 - [GitHub-hosted runners](https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners)
 
 ---
@@ -318,6 +334,7 @@ Each exercise has:
 6. Fix the issue and confirm a successful run.
 
 📍 Relevant Documentation:
+
 - [Enabling Debug Logging](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/enabling-debug-logging)
 - [Understanding Workflow Logs](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/using-workflow-run-logs)
 
@@ -338,5 +355,6 @@ Each exercise has:
 6. Confirm that the workflow executes successfully without revealing sensitive information.
 
 📍 Relevant Documentation:
+
 - [Using Environment Variables](https://docs.github.com/en/actions/learn-github-actions/environment-variables)
 - [Storing Secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
