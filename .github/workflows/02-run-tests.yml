@@ -15,6 +15,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 'lts/*'
+          cache: npm
+
+      - name: Restore npm cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os}}-node-${{ hashFiles('**/package-lock.jsin')}}
+          restore-keys: ${{ runner.os }}-node-
 
       - name: Install dependencies
         run: npm ci
