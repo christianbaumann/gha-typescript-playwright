@@ -1,0 +1,19 @@
+name: Run Playwright Testson:
+  push:
+    branches:
+      - main  # Runs tests on every push to mainjobs:
+  run-tests:
+    runs-on: ubuntu-latest    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '21'      - name: Set up Maven
+        run: |
+          sudo apt update
+          sudo apt install -y maven
+          mvn -version      - name: Install dependencies
+        run: mvn install      - name: Install Playwright Browsers
+        run: npx playwright install      - name: Run Playwright Tests
+        run: mvn test
