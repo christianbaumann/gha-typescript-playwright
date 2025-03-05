@@ -1,6 +1,6 @@
 name: Run Custom Playwright Action
 
-on: push
+on: workflow_dispatch
 
 jobs:
   custom-action:
