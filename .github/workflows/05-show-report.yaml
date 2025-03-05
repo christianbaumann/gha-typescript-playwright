@@ -1,0 +1,39 @@
+name: Show Test Report in GitHub UIon:
+  push:
+    branches:
+      - main  # Runs on every push to mainjobs:
+  run-tests:
+    runs-on: ubuntu-latest    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '21'      - name: Cache Maven Dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2/repository
+          key: maven-${{ runner.os }}-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            maven-${{ runner.os }}-      - name: Set up Maven
+        run: |
+          sudo apt update
+          sudo apt install -y maven
+          mvn -version      - name: Install dependencies (if cache is not available)
+        run: mvn install      - name: Install Playwright Browsers
+        run: npx playwright install      - name: Run Playwright Tests
+        run: mvn test      # :white_tick: Upload Test Report as an Artifact
+      - name: Upload Test Reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: Playwright-Test-Reports
+          path: |
+            target/reports
+            target/surefire-reports
+          retention-days: 7      # :white_tick: Show Test Report in GitHub Actions UI (Summary Tab)
+      - name: Display Test Report in GitHub Actions UI
+        uses: phoenix-actions/test-reporting@v15
+        with:
+          name: Playwright Test Report
+          path: target/reports/surefire.html
+          reporter: java-junit
