@@ -1,7 +1,25 @@
-name: Basic Workflowon:
-  workflow_dispatch: # Allows manual triggeringjobs:
+name: Basic Workflow
+
+on:
+  workflow_dispatch: # Allows manual triggering
+
+jobs:
   print_message:
     runs-on: ubuntu-latest
     steps:
-      - name: Print a message
-        run: echo "Hello, GitHub Actions!"
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Compile TypeScript
+        run: npx tsc script.ts
+
+      - name: Run TypeScript script
+        run: node script.js
