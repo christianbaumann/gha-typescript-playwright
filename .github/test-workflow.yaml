@@ -1,6 +1,5 @@
 name: Simple Test Workflows
-
-pull_request:
+on: pull_request
 
 jobs:
   set-up:
