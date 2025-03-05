@@ -1,10 +1,10 @@
-name: Cache Dependencies for Playwright Tests
+name: Upload Playwright Reports
 
 on: push
 
 jobs:
   tests:
-    name: Run Playwright Tests with Cache
+    name: Upload Playwright Reports
     runs-on: ubuntu-latest
 
     steps:
@@ -15,16 +15,15 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: lts/*
-          cache: npm  # Enables automatic caching for npm dependencies.
+          cache: npm
 
-      - name: Restore npm cache  # Restores previously cached npm dependencies.
+      - name: Restore npm cache
         uses: actions/cache@v4
         with:
-          path: ~/.npm  # Specifies the directory to cache (npm's global package storage).
+          path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          # Generates a unique cache key based on OS and package-lock.json hash.
           restore-keys: |
-            ${{ runner.os }}-node-  # Fallback key if an exact match isn't found.
+            ${{ runner.os }}-node-
 
       - name: Install dependencies
         run: npm ci
@@ -34,3 +33,11 @@ jobs:
 
       - name: Run Playwright tests
         run: npx playwright test
+
+      - name: Upload Test Reports  # Uploads test results as artifacts for later review.
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-artifacts  # The artifact name displayed in GitHub Actions.
+          path: |
+            playwright-report  # Directory containing Playwright's test report.
+            test-results  # Directory containing detailed test results.
