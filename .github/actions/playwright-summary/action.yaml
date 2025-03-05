@@ -1,0 +1,15 @@
+name: Playwright Summary
+description: "Formats Playwright test results for better readability"
+author: "Christian Baumann"
+
+runs:
+  using: "composite"
+
+  steps:
+    - name: Format test results
+      # Reads the test report file and appends its content to GitHub job summary.
+      run: |
+        echo "### Playwright Test Summary" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        cat test-results/report.txt | awk '{print "- **" $0 "**"}' >> $GITHUB_STEP_SUMMARY
+      shell: bash
