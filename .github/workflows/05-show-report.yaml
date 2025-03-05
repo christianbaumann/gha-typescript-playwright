@@ -1,39 +1,42 @@
-name: Show Test Report in GitHub UIon:
+name: Show Test Report in GitHub UI
+
+on:
   push:
     branches:
-      - main  # Runs on every push to mainjobs:
+      - main  # Runs on every push to main
+
+jobs:
   run-tests:
-    runs-on: ubuntu-latest    steps:
+    runs-on: ubuntu-latest
+
+    steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4      - name: Set up Java
-        uses: actions/setup-java@v3
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          distribution: 'temurin'
-          java-version: '21'      - name: Cache Maven Dependencies
-        uses: actions/cache@v3
-        with:
-          path: ~/.m2/repository
-          key: maven-${{ runner.os }}-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            maven-${{ runner.os }}-      - name: Set up Maven
-        run: |
-          sudo apt update
-          sudo apt install -y maven
-          mvn -version      - name: Install dependencies (if cache is not available)
-        run: mvn install      - name: Install Playwright Browsers
-        run: npx playwright install      - name: Run Playwright Tests
-        run: mvn test      # :white_tick: Upload Test Report as an Artifact
-      - name: Upload Test Reports
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Run Playwright Tests
+        run: npx playwright test --reporter=html,junit
+
+      - name: Upload Playwright Test Reports
         uses: actions/upload-artifact@v4
         with:
           name: Playwright-Test-Reports
-          path: |
-            target/reports
-            target/surefire-reports
-          retention-days: 7      # :white_tick: Show Test Report in GitHub Actions UI (Summary Tab)
+          path: playwright-report/
+          retention-days: 7  # Keep reports for 7 days
+
       - name: Display Test Report in GitHub Actions UI
         uses: phoenix-actions/test-reporting@v15
         with:
           name: Playwright Test Report
-          path: target/reports/surefire.html
-          reporter: java-junit
+          path: playwright-report/index.html
+          reporter: playwright
