@@ -1,0 +1,11 @@
+on:
+  workflow_dispatch:
+
+jobs:
+  run_simple_print_command:
+    name: Run simple print command
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Hello World
+        run: |
+          echo "Hello world"
