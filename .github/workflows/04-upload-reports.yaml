@@ -6,7 +6,8 @@ on:
       - main  # Runs on every push to main
 
 jobs:
-  run-tests:
+  test:
+    timeout-minutes: 60
     runs-on: ubuntu-latest
 
     steps:
@@ -16,10 +17,11 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
+          cache: "npm"
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
@@ -27,9 +29,11 @@ jobs:
       - name: Run Playwright Tests
         run: npx playwright test --reporter=html
 
-      - name: Upload Playwright Test Reports
+      - name: Upload Playwright Report and Test Results
         uses: actions/upload-artifact@v4
         with:
           name: Playwright-Test-Reports
-          path: playwright-report/
+          path: |
+            playwright-report
+            test-results
           retention-days: 7  # Keep reports for 7 days
