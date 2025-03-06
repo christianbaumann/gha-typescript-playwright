@@ -1,4 +1,4 @@
-name: Upload Playwright Test Reports
+name: Show Test Report in GitHub UI
 
 on:
   push:
@@ -6,8 +6,7 @@ on:
       - main  # Runs on every push to main
 
 jobs:
-  test:
-    timeout-minutes: 60
+  run-tests:
     runs-on: ubuntu-latest
 
     steps:
@@ -17,23 +16,27 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: "npm"
+          node-version: 18
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
       - name: Run Playwright Tests
-        run: npx playwright test --reporter=html
+        run: npx playwright test --reporter=html,junit
 
-      - name: Upload Playwright Report and Test Results
+      - name: Upload Playwright Test Reports
         uses: actions/upload-artifact@v4
         with:
           name: Playwright-Test-Reports
-          path: |
-            playwright-report
-            test-results
+          path: playwright-report/
           retention-days: 7  # Keep reports for 7 days
+
+      - name: Display Test Report in GitHub Actions UI
+        uses: phoenix-actions/test-reporting@v15
+        with:
+          name: Playwright Test Report
+          path: playwright-report/index.html
+          reporter: playwright
