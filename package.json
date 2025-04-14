@@ -10,7 +10,7 @@
     "@playwright/test": "^1.51.1",
     "jest": "^29.7.0",
     "typescript": "^5.8.3",
-    "ts-jest": "^29.3.1"
+    "ts-jest": "^29.3.2"
   },
   "jest": {
     "preset": "ts-jest",
