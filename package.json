@@ -9,8 +9,8 @@
   "devDependencies": {
     "@playwright/test": "^1.54.2",
     "jest": "^30.0.5",
+    "ts-jest": "^29.4.1"
     "typescript": "^5.9.2",
-    "ts-jest": "^29.4.0"
   },
   "jest": {
     "preset": "ts-jest",
