@@ -36,10 +36,8 @@ jobs:
 
       - name: Upload Test Reports  # Uploads test results as artifacts for later review.
         uses: actions/upload-artifact@v4
-        # target/reports - Directory containing Playwright reports.
-        # target/surefire-reports - Directory containing Maven's Surefire test reports.
         with:
-          name: test-artifacts  # The artifact name displayed in GitHub Actions.
+          name: playwright-artifacts  # The artifact name displayed in GitHub Actions.
           path: |
-            target/reports
-            target/surefire-reports
+            playwright-report  # Directory containing Playwright's test report.
+            test-results  # Directory containing detailed test results.
