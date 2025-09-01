@@ -42,4 +42,13 @@ test.describe('Playwright UI Tests', () => {
         test.info().annotations.push({ type: 'info', description: '✅ Navigation to API page successful.' });
     });
 
+    test('Check Playwright Bow Tests', async ({ page }) => {
+        // Act
+        await page.goto('https://playwright.dev/');
+
+        // Assert
+        await expect(page).toHaveTitle(/Playwright/);
+        test.info().annotations.push({ type: 'info', description: '✅ Title validation successful (PW).' });
+    });
+
 });
