@@ -1,0 +1,26 @@
+name: Run Playwright Tests
+
+on: push  # This workflow triggers on every push to any branch.
+
+jobs:
+  tests:
+    name: Run Playwright Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup NodeJS  # Step 2: Sets up Node.js to run the Playwright tests.
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*  # Uses the latest Long-Term Support (LTS) version of Node.js.
+
+      - name: Install dependencies  # Step 3: Installs project dependencies.
+        run: npm ci  # `npm ci` ensures a clean install based on package-lock.json.
+
+      - name: Install Playwright Browsers  # Step 4: Installs necessary browsers for Playwright.
+        run: npx playwright install --with-deps  # Includes dependencies required for the browsers.
+
+      - name: Run Playwright tests  # Step 5: Executes the Playwright tests.
+        run: npx playwright test  # Runs all tests defined in the Playwright test suite.
