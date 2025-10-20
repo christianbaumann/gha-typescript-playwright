@@ -7,7 +7,7 @@
     "test": "npx playwright test --reporter=html"
   },
   "devDependencies": {
-    "@playwright/test": "^1.56.0",
+    "@playwright/test": "^1.56.1",
     "jest": "^30.2.0",
     "ts-jest": "^29.4.5",
     "typescript": "^5.9.3"
