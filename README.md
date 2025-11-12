@@ -46,7 +46,7 @@ npx playwright test
 
 ## 📝 Slides
 
-[Link to slides](/slides/GitHub%20Actions%20in%20Action%20-%20TAD%202025-03.pdf)
+[Link to slides](https://drive.google.com/drive/folders/1gUoEuwNwamDFC51IgpFuBspLxKD9LsFr)
 
 ---
 
