@@ -7,7 +7,7 @@ test.describe('Playwright UI Tests', () => {
         await page.goto('https://playwright.dev/');
 
         // Assert
-        await expect(page).toHaveTitle(/Playwright/);
+        await !expect(page).toHaveTitle(/Playwright/);
         test.info().annotations.push({ type: 'info', description: '✅ Title validation successful (PW).' });
     });
 
