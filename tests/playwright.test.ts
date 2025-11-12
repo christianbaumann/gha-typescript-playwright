@@ -16,7 +16,7 @@ test.describe('Playwright UI Tests', () => {
         await page.goto('https://playwright.dev/');
 
         // Act
-        await page.getByRole('button', { name: 'Search (Ctrl+K)' }).click();
+        await page.getByRole('button', { name: /Search \((Command|Ctrl)\+K\)/ }).click();
         await page.getByRole('searchbox', { name: 'Search' }).fill('locator');
         await page.getByRole('link', { name: 'Locators', exact: true }).click();
 
