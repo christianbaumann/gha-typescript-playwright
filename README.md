@@ -177,7 +177,7 @@ Each exercise has:
 
 #### 📌 Instructions
 
-1. Ensure your workflow is set up to run tests on pull requests (e.g., using your existing `.github/workflows/05-run-on-pr.yaml` file).
+1. Ensure your workflow is set up to run tests on pull requests (e.g., using your existing `.github/workflows/06-run-on-pr.yaml` file).
 2. In GitHub, enable "Require status checks to pass before merging" (classic protection rule) for your branch.
 3. Test the setup by pushing a commit that intentionally fails a test.
 
