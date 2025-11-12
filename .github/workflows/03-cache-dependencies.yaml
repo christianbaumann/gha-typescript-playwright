@@ -1,0 +1,36 @@
+name: Cache Dependencies for Playwright Tests
+
+on: push
+
+jobs:
+  tests:
+    name: Run Playwright Tests with Cache
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup NodeJS
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: npm  # Enables automatic caching for npm dependencies.
+
+      - name: Restore npm cache  # Restores previously cached npm dependencies.
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm  # Specifies the directory to cache (npm's global package storage).
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          # Generates a unique cache key based on OS and package-lock.json hash.
+          restore-keys: |
+            ${{ runner.os }}-node-  # Fallback key if an exact match isn't found.
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Run Playwright tests
+        run: npx playwright test
