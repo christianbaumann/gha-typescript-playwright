@@ -1,0 +1,22 @@
+name: Containerized Testing
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  tests:
+    name: Containerized Testing
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.50.1-noble  # Uses a Playwright pre-installed container.
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Playwright tests
+        run: npx playwright test
