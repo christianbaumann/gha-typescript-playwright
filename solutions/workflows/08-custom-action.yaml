@@ -1,0 +1,24 @@
+name: Run Custom Playwright Action
+
+on: push
+
+jobs:
+  custom-action:
+    name: Run Custom Playwright Action
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Simulate Playwright test output
+        # Creates a directory for test results and simulates a Playwright test report.
+        run: |
+          mkdir -p test-results
+          echo "✅ Test 1: Passed" > test-results/report.txt
+          echo "❌ Test 2: Failed" >> test-results/report.txt
+          echo "✅ Test 3: Passed" >> test-results/report.txt
+
+      - name: Run custom action to format summary
+        # Calls the custom action defined in `.github/actions/playwright-summary`.
+        uses: ./.github/actions/playwright-summary
