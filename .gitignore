@@ -1,4 +1,5 @@
 /.idea/
+/gha-typescript-playwright.iml
 /node_modules/
 /test-results/
 /playwright-report/
