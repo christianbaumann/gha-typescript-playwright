@@ -1,4 +1,4 @@
-name: Run on pull request
+name: Run on pull request (Small change in feature branch)
 
 on: pull_request
 
