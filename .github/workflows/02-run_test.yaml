@@ -24,8 +24,3 @@ jobs:
 
       - name: Run Playwright tests
         run: npx playwright test
-      - uses: actions/upload-artifact@v4
-        if: ${{ !cancelled() }}
-        with: playwright-report
-        path: playwright-report/
-        rentention-days: 30
