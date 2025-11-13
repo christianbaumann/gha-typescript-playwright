@@ -1,4 +1,4 @@
-name: Run Playwright Tests with saved npm lts
+name: Show result in GitHub UI
 
 on: push
 
