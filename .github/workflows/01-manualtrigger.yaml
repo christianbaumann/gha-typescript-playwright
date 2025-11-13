@@ -1,0 +1,14 @@
+name: Manual Trigger Workflow
+
+on: workflow_dispatch
+jobs:
+  basic-workflow:
+    name: Basic Workflows
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Print env
+        run: env
