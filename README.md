@@ -8,8 +8,8 @@ This repository contains end-to-end UI tests using [Playwright](https://playwrig
 
 ### 1️⃣ Prerequisites
 
-- Node.js (LTS version recommended)
 - IDE or editor of choice
+- [Optional:] Node.js (LTS version recommended)
 
 ### 2️⃣ Fork the repo
 
@@ -29,14 +29,14 @@ cd gha-typescript-playwright
 3. Scroll all the way down to `Danger Zone`.
 4. Click `Leave fork network` (and follow the wizard).
 
-### 4️⃣ Install Dependencies
+### 4️⃣ [Optional] Install Dependencies
 
 ```sh
 npm install
 npx playwright install --with-deps
 ```
 
-### 5️⃣ Run Tests
+### 5️⃣ [Optional] Run Tests
 
 ```sh
 npx playwright test
