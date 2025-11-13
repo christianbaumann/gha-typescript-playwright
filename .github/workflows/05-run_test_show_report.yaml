@@ -1,0 +1,45 @@
+name: Run Playwright Tests with saved npm lts
+
+on: push
+
+jobs:
+  tests:
+    name: Run Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup NodeJSs
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: npm
+      
+      - name: Restore npm
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-node-
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Run Playwright tests
+        run: npx playwright test
+
+      - name: Publish report
+        uses: phoenix-actions/test-reporting@v15
+        with:
+          name: 'Publish report'
+          path: 'playwright-report/results.xml'
+          reporter: java-junit
+          list-tests: all
+          list-suites: all
+          fail-on-error: true
+          output-to: 'step-summary'
