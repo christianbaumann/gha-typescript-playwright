@@ -15,19 +15,19 @@ This repository contains end-to-end UI tests using [Playwright](https://playwrig
 
 🔗 Documentation: [Fork a repository](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo)
 
-### 3️⃣ Clone the repo
-
-```sh
-git clone https://github.com/$yourGitHubUsername/gha-typescript-playwright.git
-cd gha-typescript-playwright
-```
-
 ####  Detach from the source repo
 
 1. Go to **_your fork_** on GitHub: `https://github.com/$yourGithubUsername/gha-typescript-playwright`
 2. Click on `Settings`.
 3. Scroll all the way down to `Danger Zone`.
 4. Click `Leave fork network` (and follow the wizard).
+
+### 3️⃣ Clone the repo
+
+```sh
+git clone https://github.com/$yourGitHubUsername/gha-typescript-playwright.git
+cd gha-typescript-playwright
+```
 
 ### 4️⃣ [Optional] Install Dependencies
 
